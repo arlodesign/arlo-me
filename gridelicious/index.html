@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<!--
+	/**
+	 *
+	 * Gridelicious v.5.1
+	 * Free, as in do what ever you want with it.
+	 * Just link to me.
+	 * http://arlodesign.com/blog/2009/05/01/gridelicious/
+	 *
+	 * VERSION HISTORY
+	 * v0.5.1 5/10/10
+	 * Row and gutter settings now default to 1
+	 *
+	 * v0.5 5/10/10
+	 * Can now choose between a square grid and a proportional grid
+	 *
+	 * v0.4 6/22/09
+	 * Pressing return or enter would clear the fields;
+	 * added a "return FALSE;" to prevent that from happening
+	 *
+	 * v0.3 5/19/09
+	 * Corrected math in calculating Row Space. Again.
+	 *
+	 * v0.2 5/5/09
+	 * Corrected math calculating Row Space 
+	 *
+	 * v0.1	5/1/09
+	 * Initial Launch
+	 * 
+	 **/
+-->
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>
+		Gridelicious
+	</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Arlo Guthrie">
+	<link rel="stylesheet" href="styles.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8">
+	</script>
+	<script src="scripts.js" type="text/javascript" charset="utf-8">
+	</script>
+</head>
+
+<body>
+	<div id="wrapper">
+		<h1>
+			Gridelicious
+		</h1>
+		<form action="javascript:return FALSE;" accept-charset="utf-8">
+			<fieldset id="set_units" class="">
+				<legend>Set Units</legend>
+				<div class="field">
+					<label for="page-units">Page Measurement Units</label> <select name="page-units" id="page-units">
+						<option value="in" selected>
+							inches
+						</option>
+						<option value="pica">
+							picas
+						</option>
+						<option value="pt">
+							points
+						</option>
+						<option value="mm">
+							millimeters
+						</option>
+					</select>
+				</div>
+			</fieldset>
+			<div id="main-grid">
+				<fieldset id="page-size">
+					<legend>Page Size</legend>
+					<div class="field user-input">
+						<label for="width">Width</label><input type="text" class="text" size="6" name="width" value="" id="width">
+						<strong>=</strong> <span id="page-width-pt">0 pt</span>
+					</div>
+					<div class="field user-input">
+						<label for="height">Height</label><input type="text" class="text" size="6" name="height" value="" id="height">
+						<strong>=</strong> <span id="page-height-pt">0 pt</span>
+					</div>
+					<div class="field user-input">
+						<label for="desired-leading">Desired Leading</label><input type="text" class="text" size="6" name="desired-leading"
+						 value="12" id="desired-leading"> pt
+					</div>
+				</fieldset>
+				<fieldset id="main-grid-settings">
+					<legend>Main Grid Settings</legend>
+					<div class="field user-input">
+						<label for="grid-proportion">Grid Block Proportion</label>
+						<select name="grid-proportion" id="grid-proportion" size="1">
+							<option value="page">Page</option>
+							<option value="square">Square</option>
+						</select>
+					</div>
+					<div class="field">
+						<label for="correct-leading">Correct Leading</label><input type="text" class="text" size="6" name="correct-leading"
+						 value=""> pt
+					</div>
+					<div class="field">
+						<label for="image-lines">Image lines</label><input type="text" class="text" size="6" name="image-lines" value=""
+						 id="image-lines">
+					</div>
+					<div class="field">
+						<label for="baselines">Baselines</label><input type="text" class="text" size="6" name="baselines" value="" id="baselines">
+					</div>
+					<div class="field">
+						<label for="horz-offset">Horizontal Offset</label><input type="text" class="text" size="6" name="horz-offset"
+						 value="" id="horz-offset"> pt
+					</div>
+				</fieldset>
+			</div>
+			<div id="typography">
+				<fieldset id="f-height_line">
+					<legend>Calculations for &lsquo;f&rsquo;-height line</legend>
+					<div class="field">
+						<label for="correct-leading">Correct Leading</label><input type="text" class="text" size="6" name="correct-leading"
+						 value=""> pt
+					</div>
+					<div class="field user-input">
+						<label for="f-height">&ndash; f-height</label><input type="text" class="text" size="6" name="f-height" value=""
+						 id="f-height"> pt
+					</div>
+					<div class="field">
+						<label for="first-f-line">= First f-line</label><input type="text" class="text" size="6" name="first-f-line"
+						 value="" id="first-f-line"> pt
+					</div>
+				</fieldset>
+				<fieldset id="gutters-and-rowspace">
+					<legend>Gutters and Rowspace</legend>
+					<div class="field">
+						<label for="gutter-width">Gutter Width</label><input type="text" class="text" size="6" name="gutter-width" value=""
+						 id="gutter-width"> pt <span id="gutter-width-stepper"><a href="#" id="gutter-width-step-down" class="stepper"
+							 name="gutter-width-step-down">&darr;</a><input type="text" class="text stepper" name="gutter-val" value="1" id="gutter-val"
+							 size="1"><a href="#" id="gutter-width-step-up" class="stepper" name="gutter-width-step-up">&uarr;</a></span>
+					</div>
+					<div class="field">
+						<label for="row-space">Row Space</label><input type="text" class="text" size="6" name="row-space" value="" id="row-space">
+						<span id="row-space-stepper"> pt <a href="#" id="row-space-step-down" class="stepper" name="row-space-step-down">&darr;</a><input
+							 type="text" class="text stepper" name="row-val" value="1" id="row-val" size="1"><a href="#" id="row-space-step-up"
+							 class="stepper" name="row-space-step-up">&uarr;</a></span>
+					</div>
+				</fieldset>
+			</div>
+			<div id="reset"><input type="reset" name="RESET" value="RESET" id="RESET" class="reset"></div>
+		</form>
+		<div id="footer">
+			<p>
+				<strike>Ripped off from</strike> Inspired by <a href="http://www.designersbookshop.com/grid-calculator-buy.html">Grid
+					Calculator</a> // v0.5.1 // <a href="http://arlodesign.com/blog/2009/05/01/gridelicious/">Feedback?</a>
+			</p>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost +
+			"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		var pageTracker = _gat._getTracker("UA-4336673-1");
+		pageTracker._initData();
+		pageTracker._trackPageview();
+	</script>
+
+</body>
+
+</html>
