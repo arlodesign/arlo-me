@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "hk-grotesk";
+  src: local("HK Grotesk"), local("HKGrotesk-Regular"), url("fonts/HKGrotesk-Regular.woff2") format('woff2'), url("fonts/HKGrotesk-Regular.woff") format('woff');
+}
+
+@font-face {
+  font-family: "hk-grotesk";
+  src: local("HK Grotesk"), local("HKGrotesk-Bold"), url("fonts/HKGrotesk-Bold.woff2") format('woff2'), url("fonts/HKGrotesk-Bold.woff") format('woff');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "hk-grotesk";
+  src: local("HK Grotesk"), local("HKGrotesk-BoldItalic"), url("fonts/HKGrotesk-BoldItalic.woff2") format('woff2'), url("fonts/HKGrotesk-BoldItalic.woff") format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "hk-grotesk";
+  src: local("HK Grotesk"), local("HKGrotesk-Italic"), url("fonts/HKGrotesk-Italic.woff2") format('woff2'), url("fonts/HKGrotesk-Italic.woff") format('woff');
+  font-style: italic;
+}
+
+.link {
+  @apply text-emerald-900 font-bold underline decoration-1 hover:decoration-2;
+}
+.list {
+  @apply pr-3 pb-3 pl-1 ml-5;
+}
